@@ -179,8 +179,45 @@ if section == 7 or section == 10:
 		os.listdir("this_new_dir")
 
 if section == 8 or section == 10:
-	f = open("csv_file.txt")
+
+	if not os.path.exists("myCSV.csv"):
+		f = open("myCSV.csv", "w", newline='')
+		myHeaders = ["Name", "Number", "Role"]
+		myList = [["Joshua",500,"guy"],["Rachel",430,"admin"],["Guy Le Douche", 9001,"interviewer"],["Archon", 0 , "archon"]]
+		write = csv.writer(f)
+		write.writeheader(myHeaders)
+		write.writerows(myList)
+		f.close()
+
+
+	f = open("myCSV.csv")
 	csv_f = csv.reader(f)
 	for row in csv_f:
-		name, phone, role = row
+		name, number, role = row
+		print(" {} {} {}".format(name, number, role))
+	
+	
+if section == 9 or section == 10:
+	users = [{"name":"josh", "username":"adsf234","department":"world"},
+	{"name":"guy", "username":"ewr34","department":"hardware"},
+	{"name":"bill", "username":"te3","department":"plubming"},
+	{"name":"racheal", "username":"qwerqwer342","department":"derping"},
+	{"name":"ally", "username":"sdfg5454","department":"herping"}]
+	keys = ["name","username","department"]
+
+	with open('myDict.csv', 'w') as myDict:
+		writer = csv.DictWriter(myDict, fieldnames = keys)
+		writer.writeheader()
+		writer.writerows(users)
+
+	f = open("myDict.csv")
+	myCSV = csv.DictReader(f)
+	for row in myCSV:
+		print(row["name"], row["department"])
+
+
+
+
+
+
 
