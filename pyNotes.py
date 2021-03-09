@@ -4,6 +4,7 @@ import psutil
 import H
 import os
 import datetime
+import csv
 
 print("Choose which sections to print: ")
 
@@ -176,5 +177,10 @@ if section == 7 or section == 10:
 
 	if os.path.isdir("this_new_dir"):
 		os.listdir("this_new_dir")
-		
+
+if section == 8 or section == 10:
+	f = open("csv_file.txt")
+	csv_f = csv.reader(f)
+	for row in csv_f:
+		name, phone, role = row
 
