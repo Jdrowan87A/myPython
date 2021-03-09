@@ -3,6 +3,7 @@ import shutil
 import psutil
 import H
 import os
+import datetime
 
 print("Choose which sections to print: ")
 
@@ -128,4 +129,52 @@ if section == 6 or section ==10:
 	ff = open("othertext.txt")
 	print(ff.readline())
 	ff.close()
+
+	print(os.path.getsize("myText.txt"))
+
+	timestamp = os.path.getmtime("myText.txt")
+	print(timestamp)
+	newTS = datetime.datetime.fromtimestamp(timestamp)
+	print(newTS)
+
+if section == 7 or section == 10:
+	#more os functions for directories
+	if os.path.isdir("this_new_dir"):
+		os.rmdir("this_new_dir")
+
+	print("First directory call" + os.getcwd())
+	os.mkdir("this_new_dir")
+
+	print("listdir(): ",end="")
+
+	print(os.listdir("this_new_dir"))
+
+	os.chdir("this_new_dir")
+
+	print("After changing directory: " + os.getcwd())
+	#other way to get the filename:
+	thisDir = os.getcwd().rpartition('\\')[2]
+	print("the current folder" + thisDir)
+	##
+
+	oldDir = os.getcwd().replace("this_new_dir",'')
+
+	os.chdir(oldDir)
+
+	print("After returning to old directory: " + os.getcwd())
+
+	os.chdir("this_new_dir")
+
+	#simplest method
+	os.chdir(os.path.join(os.getcwd(),".."))
+
+	print("No '..' inside the join: " + os.path.join(os.getcwd(),""))
+
+	print("Using join: " + os.getcwd())
+
+	os.rmdir("this_new_dir")
+
+	if os.path.isdir("this_new_dir"):
+		os.listdir("this_new_dir")
+		
 
