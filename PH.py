@@ -47,16 +47,16 @@ def federal_tax(income):
 
 def calculate_taxes(userinput):
 	yearly = 0
-	if userinput == 1:
+	if userinput["input"] == 1:
 		print("What is you hourly wage? (no dollar signs):", end="")
 		userIncome = float(input())
 		yearly = calculate_yearly(userIncome)
 
-	elif userinput == 2:
+	elif userinput["input"] == 2:
 		print("What is your annual salary? (no dollar signs):", end="")
 		yearly = float(input())
 
-	elif userinput == 5:
+	elif userinput["input"] == 5:
 		print("Hourly Wage: ",end="")
 		hourly = float(input())
 		print("Average Hours per Day: ",end="")
@@ -67,7 +67,7 @@ def calculate_taxes(userinput):
 		days = float(input())
 		yearly = ( days * hours * hourly * 52) + (days * tips * 52)
 
-	elif userinput == 4:
+	elif userinput["input"] == 4:
 		print("What is you hourly wage? (no dollar signs):", end="")
 		userIncome = float(input())
 		print("What is your overtime rate? (1.5 is time and a half)", end="")
