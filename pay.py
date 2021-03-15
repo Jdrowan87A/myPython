@@ -105,5 +105,5 @@ def calculate_required(data):
 		y = yearly - taxes
 		
 
-	ret_string = ("To take home ${:,.2f} annually, your hourly wage must be ${:,.2f}\n".format(userAnnual,x))
+	ret_string = ("To take home ${:,.2f} annually,\n your hourly wage must be ${:,.2f}\n".format(userAnnual,x))
 	return ret_string

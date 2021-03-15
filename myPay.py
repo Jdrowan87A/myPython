@@ -21,7 +21,8 @@ def all_output(data,frame,window,inp):
 
 ## button handler. Pulls in name of of the button and generates correct frame to gather new information.
 def handle_button(name,old_frame,window):
-	
+	if name == "Exit":
+		window.destroy()
 	old_frame.destroy()
 	if name == "Hourly":
 		frm_info = tk.Frame(master = window, width= 50)
@@ -131,16 +132,17 @@ def loader_main(window,frame):
 	frm_one = tk.Frame(master= window, width = 150, bg="black")
 	frm_one.pack()
 
-	button_names = ["Hourly", "Salary", "Income Required", "Hourly Tips", "Hourly Overtime"]
+	button_names = ["Hourly", "Salary", "Income Required", "Hourly Tips", "Hourly Overtime","Exit"]
 	button_list=[]
 	for name in button_names:
-		button_list.append(tk.Button(master = frm_one, width = 15, text = name, command =lambda name=name: handle_button(name,frm_one,window)))
+		button_list.append(tk.Button(master = frm_one, width = 15, text = name,relief = tk.GROOVE, borderwidth=2, command =lambda name=name: handle_button(name,frm_one,window)))
 	for button in button_list:
 		button.pack()
-
+	button_list[0].focus()
 ###ENTRY POINT###	
 
 window = tk.Tk()
+window.geometry("550x250")
 fr = tk.Frame()
 loader_main(window,fr)
 
